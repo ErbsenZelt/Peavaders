@@ -1142,15 +1142,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630256636f71b704ca24581b6c541db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetPos: {fileID: 582427848}
+  Target: {fileID: 0}
+  ToAvoid: []
   NavAgent: {fileID: 1914107126}
-  ToAvoid:
-  - {fileID: 607529684}
   AvoidDistance: 20
+  FleeSpeed: 2
   Eyes:
   - {fileID: 1300891721}
   - {fileID: 252422768}
-  EyeTarget: {fileID: 607529688}
+  EyeTarget: {fileID: 1290680412}
   RB: {fileID: 1914107128}
 --- !u!195 &1914107126
 NavMeshAgent:

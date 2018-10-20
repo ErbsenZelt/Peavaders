@@ -9,34 +9,26 @@ using UnityEngine;
 */
 public class Enemy : MonoBehaviour {
 
-    [SerializeField] private Transform TargetPos;
+    [SerializeField] private Transform Target;
+    [SerializeField] private GameObject[] ToAvoid; //List of all objects that have the AvoidTag as tag. Only updated on Spawn()
 
     //assigned in Editor:
     [SerializeField] private NavMeshAgent NavAgent;
-    [SerializeField] private GameObject[] ToAvoid; //List of all objects that have the AvoidTag as tag. Only updated on Spawn()
     [SerializeField] private float AvoidDistance; //avoid is triggered when closer to an avoidobject than this distance
     [SerializeField] private float FleeSpeed;
     [SerializeField] private Transform[] Eyes;
     [SerializeField] private Transform EyeTarget;
     [SerializeField] private Rigidbody RB; //RigidBody of this gameobject
 
-    //TESTING ONLY
-    public void Start()
+    public void FindAvoidObjects(string AvoidTag)
     {
-        Spawn(Vector3.up * 3, "Avoid");
-    }
-
-    public void Spawn(Vector3 SpawnPos, string AvoidTag)
-    {
-        transform.position = SpawnPos;
         ToAvoid = GameObject.FindGameObjectsWithTag(AvoidTag);
-        
-        
     }
 
     public void FixedUpdate()
     {
-        NavAgent.destination = TargetPos.position;
+        NavAgent.destination = Target.position;
+
         //point eyes at eyetargetposition
         foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(EyeTarget.position - transform.position + transform.position.y * Vector3.up, Vector3.up);
 
