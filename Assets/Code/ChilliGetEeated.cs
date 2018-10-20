@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChilliGetEeated : MonoBehaviour
 {
 
+
     //Counts Time for triggerd Damage Script - Every Second Damage should happen
     float fStayTimer = 0;
 
@@ -50,14 +51,14 @@ public class ChilliGetEeated : MonoBehaviour
         }
 
         Debug.Log("Remaing health of " + this.gameObject.name + ": " + fChilliHealth);
-         }
+    }
 
 
     //Do Damage evry second while collision
     private void OnTriggerStay(Collider col)
     {
         DoDamage(col);
-       
+
     }
 
     //Initialize Timer
@@ -69,9 +70,10 @@ public class ChilliGetEeated : MonoBehaviour
 
     void Start()
     {
-        
+
 
     }
+
 
 
 }

@@ -83,5 +83,9 @@ public class Enemy : MonoBehaviour
 
 
     }
+	
+	public void Die() {
+		Spawner.Instance.Despawn(gameObject);
+	}
 
 }
