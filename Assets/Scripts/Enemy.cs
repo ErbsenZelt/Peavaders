@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
@@ -9,11 +9,15 @@ using UnityEngine;
 */
 public class Enemy : MonoBehaviour {
 
+    [SerializeField] private Transform TargetPos;
+
     //assigned in Editor:
     [SerializeField] private NavMeshAgent NavAgent;
-    [SerializeField] private Vector3 TargetPos;
     [SerializeField] private GameObject[] ToAvoid; //List of all objects that have the AvoidTag as tag. Only updated on Spawn()
+    [SerializeField] private float AvoidDistance; //avoid is triggered when closer to an avoidobject than this distance
+    [SerializeField] private float FleeSpeed;
     [SerializeField] private Transform[] Eyes;
+    [SerializeField] private Transform EyeTarget;
     [SerializeField] private Rigidbody RB; //RigidBody of this gameobject
 
     //TESTING ONLY
@@ -26,19 +30,26 @@ public class Enemy : MonoBehaviour {
     {
         transform.position = SpawnPos;
         ToAvoid = GameObject.FindGameObjectsWithTag(AvoidTag);
-        NavAgent.destination = TargetPos; 
+        
+        
     }
 
     public void FixedUpdate()
     {
-        //point eyes at targetposition
-        foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(NavAgent.destination - transform.position + transform.position.y * Vector3.up, Vector3.up); 
+        NavAgent.destination = TargetPos.position;
+        //point eyes at eyetargetposition
+        foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(EyeTarget.position - transform.position + transform.position.y * Vector3.up, Vector3.up);
 
         //avoid ToAvoid Objects
         foreach (GameObject AvoidObject in ToAvoid)
         {
-            Vector3 AwayFromTarget = transform.position - AvoidObject.transform.position;
-            RB.velocity += AwayFromTarget/Vector3.SqrMagnitude(AwayFromTarget);
+            Vector3 AwayFromObject = Vector3.ProjectOnPlane(transform.position - AvoidObject.transform.position, Vector3.up);
+            if (AwayFromObject.magnitude < AvoidDistance)
+            {
+                RB.AddForce(
+                    AwayFromObject.normalized * FleeSpeed);
+
+            }
         }
     }
 }
