@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetButton("Horizontal2") || Input.GetButton("Vertical2")) {
-			Debug.Log("Aw shit boii");
 			characterTwo.UpdatePosition(new Vector2(
 			Input.GetAxis("Horizontal2"),
 			Input.GetAxis("Vertical2")));
 		}
+
 
 	}
 }
