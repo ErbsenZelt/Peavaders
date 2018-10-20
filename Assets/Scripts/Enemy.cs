@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
                 NearestGameObject = go;
             }
 
-            Debug.Log(go.name + ": " + Vector3.Distance(this.gameObject.transform.position, go.transform.position));
+           //Debug.Log(go.name + ": " + Vector3.Distance(this.gameObject.transform.position, go.transform.position));
         }
 
         Target = NearestGameObject;
