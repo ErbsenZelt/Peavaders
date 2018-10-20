@@ -16,7 +16,11 @@ public class ChilliGetEeated : MonoBehaviour {
             {
                 // Destroy Object
                 Debug.Log("I should have been destroyed");
-                Destroy(this.gameObject);
+
+                this.gameObject.SetActive(false);
+                //Destroy(this.gameObject);
+
+
             }
         }
     }
@@ -53,6 +57,9 @@ public class ChilliGetEeated : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
+        DefaultEnemySettings EnemyLink = col.gameObject.GetComponent<DefaultEnemySettings>();
+         var r =EnemyLink.fDamage;
+
         fStayTimer = 0;
         Debug.Log("Hello there");
         //Debug.Log(col.gameObject.tag);
