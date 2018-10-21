@@ -10,54 +10,36 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-     private GameObject Target;
+    private GameObject Target;
     [SerializeField] private GameObject[] ToAvoid; //List of all objects that have the AvoidTag as tag. Only updated on Spawn()
+
+
+    
+    AudioSource DeathSound;
 
     //assigned in Editor:
     [SerializeField] private NavMeshAgent NavAgent;
-    [SerializeField] private float AvoidDistance; //avoid is triggered when closer to an avoidobject than this distance
-    [SerializeField] private float FleeSpeed;
     [SerializeField] private Transform[] Eyes;
-   private Transform EyeTarget;
     [SerializeField] private Rigidbody RB; //RigidBody of this gameobject
 
-
-
-
-    public void FindAvoidObjects(string AvoidTag)
-    {
-        ToAvoid = GameObject.FindGameObjectsWithTag(AvoidTag);
-    }
+    [SerializeField] private ParticleSystem dieAnim;
 
     public void FixedUpdate()
     {
 
-      if (!Target.activeSelf)
+        if (Target.activeSelf == false)
         {
-            Start();
+            OnEnable();
         }
 
         NavAgent.destination = Target.transform.position;
-        EyeTarget = Target.transform;
 
         //point eyes at eyetargetposition
-        foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(EyeTarget.position - transform.position + transform.position.y * Vector3.up, Vector3.up);
-
-        //avoid ToAvoid Objects
-        //foreach (GameObject AvoidObject in ToAvoid)
-        //{
-        //    Vector3 AwayFromObject = Vector3.ProjectOnPlane(transform.position - AvoidObject.transform.position, Vector3.up);
-        //    if (AwayFromObject.magnitude < AvoidDistance)
-        //    {
-        //        RB.AddForce(
-        //            AwayFromObject.normalized * FleeSpeed);
-
-        //    }
-        //}
+        foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(Target.transform.position - transform.position + transform.position.y * Vector3.up, Vector3.up);
     }
 
 
-    public void Start()
+    void OnEnable()
     {
 
         float fShortestDistance;
@@ -76,16 +58,24 @@ public class Enemy : MonoBehaviour
                 NearestGameObject = go;
             }
 
-           //Debug.Log(go.name + ": " + Vector3.Distance(this.gameObject.transform.position, go.transform.position));
+            //Debug.Log(go.name + ": " + Vector3.Distance(this.gameObject.transform.position, go.transform.position));
         }
 
         Target = NearestGameObject;
+    }
 
+    private void Start()
+    {
+        DeathSound = GameObject.Find("DeathSound").gameObject.GetComponent<AudioSource>();
 
     }
-	
-	public void Die() {
-		Spawner.Instance.Despawn(gameObject);
-	}
 
+    public void Die()
+    {
+        DeathSound.Play();
+
+
+        Instantiate(dieAnim, gameObject.transform.position, Quaternion.identity);
+        Spawner.Instance.Despawn(gameObject);
+    }
 }

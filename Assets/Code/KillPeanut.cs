@@ -4,23 +4,63 @@ using UnityEngine;
 
 public class KillPeanut : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider col)
-    {
-        Debug.Log("Enterd: " +  col.name);
 
-        if (col.gameObject.tag == "Enemy")
+    public float fExtendedGateTime = 0;
+    public float fHealChilliValue = 5;
+
+    private float fTimer = 0;
+
+    private void HealChilli(GameObject go)
+    {
+        ChilliGetEeated ChilliLink = go.GetComponent<ChilliGetEeated>();
+        ChilliLink.fChilliHealth += fHealChilliValue;
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        switch (col.gameObject.tag)
         {
-            Destroy(col.gameObject);
+            case "Target":
+                fTimer += Time.deltaTime;
+                if (fTimer >= 1)
+                {
+                    fTimer = 0;
+                    HealChilli(col.gameObject);
+                    //Heal
+                }
+                break;
         }
     }
 
-    // Use this for initialization
-    void Start () {
-		
+	private void OnTriggerEnter(Collider col) {
+
+
+		switch (col.gameObject.tag) {
+			case "Enemy":
+			col.gameObject.GetComponent<Enemy>().Die();
+			break;
+			case "Gate":
+
+			CloseGate gateLink = col.gameObject.GetComponent<CloseGate>();
+			gateLink.fRemainingTime = gateLink.fMaxTime + fExtendedGateTime;            //++ Player Powerup Bonus
+			gateLink.UpdateMesh();
+			break;
+			case "PowerUP":
+			PowerUp01 PowerUpLink = col.gameObject.GetComponent<PowerUp01>();
+			PowerUpLink.Power(this.gameObject);
+			break; 
+			case "Target":
+                fTimer += Time.deltaTime;
+                if (fTimer >= 1)
+                {
+                    fTimer = 0;
+                    HealChilli(col.gameObject);
+                }
+                break;
+		}
+
+
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
