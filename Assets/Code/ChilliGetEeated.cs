@@ -20,7 +20,7 @@ public class ChilliGetEeated : MonoBehaviour
             {
                 // Disable Object
                 this.gameObject.SetActive(false);
-                Debug.Log(this.gameObject.name + " should have been disabled");
+//                Debug.Log(this.gameObject.name + " should have been disabled");
             }
         }
     }
@@ -50,7 +50,7 @@ public class ChilliGetEeated : MonoBehaviour
             }
         }
 
-        Debug.Log("Remaing health of " + this.gameObject.name + ": " + fChilliHealth);
+//        Debug.Log("Remaing health of " + this.gameObject.name + ": " + fChilliHealth);
     }
 
 
@@ -67,13 +67,5 @@ public class ChilliGetEeated : MonoBehaviour
         DoDamage(col);
 
     }
-
-    void Start()
-    {
-
-
-    }
-
-
 
 }

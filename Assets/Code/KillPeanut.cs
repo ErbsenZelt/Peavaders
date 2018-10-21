@@ -4,23 +4,9 @@ using UnityEngine;
 
 public class KillPeanut : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider col)
-    {
-        Debug.Log("Enterd: " +  col.name);
-
-        if (col.gameObject.tag == "Enemy")
-        {
-            Destroy(col.gameObject);
-        }
-    }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	private void OnTriggerEnter(Collider col) {
+		if (col.gameObject.tag == "Enemy") {
+			col.gameObject.GetComponent<Enemy>().Die();
+		}
 	}
 }

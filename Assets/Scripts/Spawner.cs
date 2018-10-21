@@ -55,8 +55,7 @@ public class Spawner : MonoBehaviour {
 
 
 	public Vector3 getRandomSpawnPoint() {
-		Vector3 pos = spawnPoints.RandomElement<Transform>().position;
-		return pos;
+		return spawnPoints.RandomElement<Transform>().position; ;
 	}
 
 
@@ -78,9 +77,5 @@ public static class CollectionExtension {
 
 	public static T RandomElement<T>(this IList<T> list) {
 		return list[Random.Range(0, list.Count)];
-	}
-
-	public static T RandomElement<T>(this T[] array) {
-		return array[Random.Range(0, array.Length)];
 	}
 }
