@@ -30,8 +30,8 @@ public class ChiliMaster : MonoBehaviour {
 
     private void SwitchToMainMenu()
     {
-        //SceneManager.LoadSceneAsync("Menu");
-        //SceneManager.UnloadSceneAsync("Level 0");
+        SceneManager.LoadSceneAsync("Menu");
+        SceneManager.UnloadSceneAsync("Level 0");
     }
 
     private void ClearText()
