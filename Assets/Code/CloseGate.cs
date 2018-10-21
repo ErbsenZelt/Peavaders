@@ -55,4 +55,9 @@ public class CloseGate : MonoBehaviour
 
 
     }
+    public float getRemainingTime()
+    {
+        Debug.Log(fRemainingTime);
+        return fRemainingTime;
+    }
 }

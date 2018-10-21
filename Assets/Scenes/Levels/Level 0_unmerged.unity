@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.86101335, g: 0.7790319, b: 0.65554535, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1364,6 +1364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fExtendedGateTime: 0
+  fHealChilliValue: 5
 --- !u!4 &370666147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013564276438, guid: e066734309a9a194aa3f1806e5a664ee,
@@ -3116,6 +3117,7 @@ MonoBehaviour:
   - {fileID: 329985425}
   - {fileID: 1358790363}
   Offset: {x: 0, y: 25, z: -60}
+  Height: 0
   FOV_Clamps: {x: 10, y: 18}
 --- !u!4 &863684570 stripped
 Transform:
@@ -3957,6 +3959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fExtendedGateTime: 0
+  fHealChilliValue: 5
 --- !u!4 &1117295830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012543830182, guid: 9b45911d1d2129e4cb64ed0267651a9b,
@@ -5403,6 +5406,27 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27d4b4b0f4559e545a3dac5dbe25d94d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1624022325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010453597566, guid: 27d4b4b0f4559e545a3dac5dbe25d94d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1620495897}
+--- !u!114 &1624022328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1624022325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9528ad3f576c84aa65ea06ae7aa3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSpawnTypes: []
+  spawnPoints: []
+  maxAmount: 20
+  spawnRate: 1
+  canSpawn: 1
 --- !u!4 &1666685378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011056383746, guid: a0fed0451144c4f47806ddf55c604ad9,
@@ -6105,6 +6129,7 @@ MonoBehaviour:
   fPlayerRunSpeed: 10
   fExtendedGateTime: 10
   fPowerUpTime: 5
+  fChilliHealing: 5
   _fRemainingTime: 0
 --- !u!43 &1889171814
 Mesh:
@@ -6384,7 +6409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1971385869}
-  - component: {fileID: 1971385868}
+  - component: {fileID: 1971385870}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -6392,24 +6417,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1971385868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1971385867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2c0d3ccdc06bc45aa8335b18b91d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyTypes:
-  - {fileID: 1090749766824236, guid: 4c1fdf63c93f0fd4db2e834019dbfb0a, type: 2}
-  spawnPoints:
-  - {fileID: 1019666700}
-  maxAmount: 100
-  spawnRate: 10
-  canSpawn: 1
 --- !u!4 &1971385869
 Transform:
   m_ObjectHideFlags: 0
@@ -6424,6 +6431,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1971385870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1971385867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6186a0f3fe91fc64389858001b45b340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSpawnTypes:
+  - {fileID: 1090749766824236, guid: 4c1fdf63c93f0fd4db2e834019dbfb0a, type: 2}
+  spawnPoints:
+  - {fileID: 1019666700}
+  maxAmount: 20
+  spawnRate: 10
+  canSpawn: 1
 --- !u!4 &1987309947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011056383746, guid: a0fed0451144c4f47806ddf55c604ad9,
