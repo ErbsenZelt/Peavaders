@@ -15,7 +15,9 @@ public class ChilliGetEeated : MonoBehaviour
         get { return _fChilliHealth; }
         set
         {
-            _fChilliHealth = value;
+        
+            _fChilliHealth = Mathf.Clamp( value,0,100);
+            Debug.Log(this.gameObject.name + "' Health: " + _fChilliHealth);
             if (_fChilliHealth <= 0)
             {
                 // Disable Object

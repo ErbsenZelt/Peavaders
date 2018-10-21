@@ -15,6 +15,9 @@ public class PowerUp01 : MonoBehaviour
     [SerializeField, Range(1,60)]
     public float fPowerUpTime = 5;
 
+    [SerializeField, Range(1, 30)]
+    public float fChilliHealing = 5;
+
     private bool isActive = false;
     private GameObject Target;
 
@@ -39,18 +42,28 @@ public class PowerUp01 : MonoBehaviour
        
             MovableCharacter PlayerLink = Target.transform.parent.GetComponent<MovableCharacter>();
             PlayerLink.moveSpeed -= fPlayerRunSpeed;
-        
+
+        KillPeanut PlayerLink1 = Target.GetComponent<KillPeanut>();
+        PlayerLink1.fExtendedGateTime -= fExtendedGateTime;
+        PlayerLink1.fHealChilliValue -= fChilliHealing;
+
+
         isActive = false;
     }
 
     private void EnablePowers()
     {
         isActive = true;
-       
+        Destroy(this.gameObject);
+
             MovableCharacter PlayerLink = Target.transform.parent.GetComponent<MovableCharacter>();
             PlayerLink.moveSpeed += fPlayerRunSpeed;
-       // PlayerLink = Target.GetComponent<KillPeanut>();
+        
+      
 
+       KillPeanut  PlayerLink1 = Target.GetComponent<KillPeanut>();
+        PlayerLink1.fExtendedGateTime += fExtendedGateTime;
+        PlayerLink1.fHealChilliValue += fChilliHealing;
 
     }
 
