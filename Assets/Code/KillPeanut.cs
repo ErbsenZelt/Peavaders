@@ -12,13 +12,17 @@ public class KillPeanut : MonoBehaviour {
         switch (col.gameObject.tag)
         {
             case "Enemy":
-                Destroy(col.gameObject);
+                col.gameObject.GetComponent<Enemy>().Die();
                 break;
             case "Gate":
 
                 CloseGate GateLink = col.gameObject.GetComponent<CloseGate>();
                 GateLink.fRemainingTime = GateLink.fMaxTime;            //++ Player Powerup Bonus
                 Debug.Log(GateLink.fRemainingTime);
+                break;
+            case "PowerUP":
+                PowerUp01 PowerUpLink = col.gameObject.GetComponent<PowerUp01>();
+                PowerUpLink.Power(this.gameObject);
                 break;
         }
 

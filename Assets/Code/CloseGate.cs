@@ -62,7 +62,7 @@ public class CloseGate : MonoBehaviour
         {
             fTimer = 0;
             fRemainingTime -= 1;
-            Debug.Log(this.gameObject.name + ": " + fRemainingTime + " sec remaining");
+            //Debug.Log(this.gameObject.name + ": " + fRemainingTime + " sec remaining");
         }
 
 

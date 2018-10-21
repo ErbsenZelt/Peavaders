@@ -24,14 +24,15 @@ public class MultiObjectCamera : MonoBehaviour {
         transform.position = origin + Offset;
         transform.LookAt(origin);
 
-        Cam.fieldOfView += Input.GetAxis("Mouse ScrollWheel");
+        Cam.fieldOfView += 5* Input.GetAxis("Mouse ScrollWheel");
         if (Cam.fieldOfView < FOV_Clamps.x) Cam.fieldOfView = FOV_Clamps.x;
         if (Cam.fieldOfView > FOV_Clamps.y) Cam.fieldOfView = FOV_Clamps.y;
 
         foreach (Transform Target in Targets)
         {
             Vector3 screenPoint = Cam.WorldToViewportPoint(Target.position);
-            while (!(screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1)) { Debug.Log("Zooming out"); transform.position += Offset.normalized; }
+            int i = 0;
+            while (i<100 && !(screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1)) { i++; transform.position += Offset.normalized; }
             Offset = transform.position - origin;
         }
     }
