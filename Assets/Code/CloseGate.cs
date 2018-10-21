@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CloseGate : MonoBehaviour
 {
 
-
+	public NavMeshSurface navMesh;
     public float fRemainingTime
     {
         get { return _fRemaingTime; }
@@ -19,31 +19,15 @@ public class CloseGate : MonoBehaviour
             {
                 this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
                 this.gameObject.GetComponent<NavMeshObstacle>().enabled = false;
-                //foreach (MeshRenderer mr in this.gameObject.GetComponentsInChildren<MeshRenderer>())
-                //{
-                //    mr.enabled = false;
-                //}
-                
-                
-                //this.gameObject.GetComponent<BoxCollider>().enabled = false;
+				UpdateMesh();
 
-                // Disable Object
-                //this.gameObject.SetActive(false);
-                //Debug.Log(this.gameObject.name + " should have been disabled");
-            }
-            else
+			}
+			else
             {
                 this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
                 this.gameObject.GetComponent<NavMeshObstacle>().enabled = true;
-               // this.gameObject.
-                //foreach (MeshRenderer mr in this.gameObject.GetComponentsInChildren<MeshRenderer>())
-                //{
-                //    mr.enabled = true;
-                //}
-                //this.gameObject.GetComponent<BoxCollider>().enabled = true;
-
-            }
-        }
+			}
+		}
     }
 
     //Set defaut value
@@ -54,7 +38,11 @@ public class CloseGate : MonoBehaviour
     private float _fRemaingTime = 0;
     private float fTimer = 0;
 
-    private void FixedUpdate()
+	public void UpdateMesh() {
+		navMesh.BuildNavMesh();
+
+	}
+	private void FixedUpdate()
     {
 
         fTimer += Time.deltaTime;
@@ -65,20 +53,6 @@ public class CloseGate : MonoBehaviour
             //Debug.Log(this.gameObject.name + ": " + fRemainingTime + " sec remaining");
         }
 
-
-    }
-
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 }

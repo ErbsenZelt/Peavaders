@@ -29,9 +29,6 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void FixedUpdate() {
-
-
-
 		NavAgent.destination = Target.transform.position;
 		EyeTarget = Target.transform;
 
