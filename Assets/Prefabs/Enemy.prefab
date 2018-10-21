@@ -682,12 +682,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToAvoid: []
   NavAgent: {fileID: 195842834756393518}
-  AvoidDistance: 20
-  FleeSpeed: 2
   Eyes:
   - {fileID: 4179309098883116}
   - {fileID: 4733340944933538}
   RB: {fileID: 54958261637582422}
+  dieAnim: {fileID: 19860484, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 2}
 --- !u!114 &114671959151911004
 MonoBehaviour:
   m_ObjectHideFlags: 1
