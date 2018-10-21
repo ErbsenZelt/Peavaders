@@ -8,10 +8,21 @@ public class KillPeanut : MonoBehaviour {
     {
         Debug.Log("Enterd: " +  col.name);
 
-        if (col.gameObject.tag == "Enemy")
+
+        switch (col.gameObject.tag)
         {
-            Destroy(col.gameObject);
+            case "Enemy":
+                Destroy(col.gameObject);
+                break;
+            case "Gate":
+
+                CloseGate GateLink = col.gameObject.GetComponent<CloseGate>();
+                GateLink.fRemainingTime = GateLink.fMaxTime;            //++ Player Powerup Bonus
+                Debug.Log(GateLink.fRemainingTime);
+                break;
         }
+
+       
     }
 
     // Use this for initialization

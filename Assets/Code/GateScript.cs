@@ -29,6 +29,8 @@ public class GateScript : MonoBehaviour {
     
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Space)) ChangeState(1);
+
 
         if (Door.rotation.eulerAngles.y >= 270 || Door.rotation.eulerAngles.y == 0) Door.RotateAround(RotationCenter, Vector3.up, AngleIncrement * Time.deltaTime);
         else

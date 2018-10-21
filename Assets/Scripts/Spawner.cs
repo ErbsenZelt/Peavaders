@@ -61,11 +61,12 @@ public class Spawner : MonoBehaviour {
 
 
 	IEnumerator spawnEnemies() {
-		int amount = Random.Range(1, 2);
+
+
+        
+		int amount = Random.Range(1+(int)(Time.time/10), 5 + (int)(Time.time/10));
 
 		for (int i = 0; i < amount; i++) {
-
-
 			GameObject temp = SimplePool.Spawn(enemyTypes.RandomElement<GameObject>(), getRandomSpawnPoint(), Quaternion.identity);
 			temp.transform.SetParent(gameObject.transform);
 			yield return new WaitForSeconds(0.5f);
