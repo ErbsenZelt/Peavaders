@@ -16,4 +16,4 @@ You've found a rocky safe place, but you realized that there are holes in the wa
 
 Download [here](https://github.com/ErbsenZelt/Peavaders/raw/master/Peavaders%20Pre-Alpha%20Preorder%20Bundle.app.zip) (macOS Only 😂)
 
-![Gameplay](https://github.com/ErbsenZelt/Peavaders/raw/master/Pictures/Death.png)
+![Gameplay](https://github.com/ErbsenZelt/Peavaders/raw/master/Pictures/Close.png)
