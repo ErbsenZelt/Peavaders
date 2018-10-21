@@ -73,13 +73,13 @@ public class Spawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        int amount = Random.Range(1, 5);
+        int amount = Random.Range(1 + (int)(Time.time / 10), 5 + (int)(Time.time/2));
 
         for (int i = 0; i < amount; i++)
         {
             GameObject temp = SimplePool.Spawn(toSpawnTypes.RandomElement<GameObject>(), getRandomSpawnPoint(), Quaternion.identity);
             temp.transform.SetParent(gameObject.transform);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

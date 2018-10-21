@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
 
       if (Target.activeSelf == false)
         {
-            Start();
+            OnEnable();
         }
 
         NavAgent.destination = Target.transform.position;
