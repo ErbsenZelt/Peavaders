@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private NavMeshAgent NavAgent;
     [SerializeField] private Transform[] Eyes;
     [SerializeField] private Rigidbody RB; //RigidBody of this gameobject
-    private Transform EyeTarget;
 
     [SerializeField] private ParticleSystem dieAnim;
 
@@ -34,10 +33,9 @@ public class Enemy : MonoBehaviour
         }
 
         NavAgent.destination = Target.transform.position;
-        EyeTarget = Target.transform;
 
         //point eyes at eyetargetposition
-        foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(EyeTarget.position - transform.position + transform.position.y * Vector3.up, Vector3.up);
+        foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(Target.transform.position - transform.position + transform.position.y * Vector3.up, Vector3.up);
     }
 
 

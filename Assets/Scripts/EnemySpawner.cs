@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemySpawner : Spawner
 {
 
+
     public override float SpawnRate()
     {
 // Change Function to whatever you want 

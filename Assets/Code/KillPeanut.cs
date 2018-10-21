@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillPeanut : MonoBehaviour
-{
+public class KillPeanut : MonoBehaviour {
 
 
     public float fExtendedGateTime = 0;
@@ -33,27 +32,24 @@ public class KillPeanut : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
-        Debug.Log("Enterd: " + col.name);
+	private void OnTriggerEnter(Collider col) {
 
 
-        switch (col.gameObject.tag)
-        {
-            case "Enemy":
-                col.gameObject.GetComponent<Enemy>().Die();
-                break;
-            case "Gate":
+		switch (col.gameObject.tag) {
+			case "Enemy":
+			col.gameObject.GetComponent<Enemy>().Die();
+			break;
+			case "Gate":
 
-                CloseGate GateLink = col.gameObject.GetComponent<CloseGate>();
-                GateLink.fRemainingTime = GateLink.fMaxTime + fExtendedGateTime;            //++ Player Powerup Bonus
-                Debug.Log(GateLink.fRemainingTime);
-                break;
-            case "PowerUP":
-                PowerUp01 PowerUpLink = col.gameObject.GetComponent<PowerUp01>();
-                PowerUpLink.Power(this.gameObject);
-                break;
-            case "Target":
+			CloseGate gateLink = col.gameObject.GetComponent<CloseGate>();
+			gateLink.fRemainingTime = gateLink.fMaxTime + fExtendedGateTime;            //++ Player Powerup Bonus
+			gateLink.UpdateMesh();
+			break;
+			case "PowerUP":
+			PowerUp01 PowerUpLink = col.gameObject.GetComponent<PowerUp01>();
+			PowerUpLink.Power(this.gameObject);
+			break; 
+			case "Target":
                 fTimer += Time.deltaTime;
                 if (fTimer >= 1)
                 {
@@ -61,9 +57,10 @@ public class KillPeanut : MonoBehaviour
                     HealChilli(col.gameObject);
                 }
                 break;
-        }
+		}
 
 
-    }
+
+	}
 
 }
