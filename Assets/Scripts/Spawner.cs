@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 public class Spawner : MonoBehaviour {
-	public List<GameObject> enemyTypes;
+	public List<GameObject> toSpawnTypes;
 	public List<Transform> spawnPoints;
 
 	public int maxAmount = 20;
@@ -27,19 +27,21 @@ public class Spawner : MonoBehaviour {
 		}
 	}
 	void Start() {
-		if (enemyTypes.Count == 0) Debug.Log("Enemy types list empty");
+		if (toSpawnTypes.Count == 0) Debug.Log("Types list empty");
 
 		if (spawnPoints.Count == 0) spawnPoints.Add(transform);
-		foreach (var item in enemyTypes) {
+		foreach (var item in toSpawnTypes) {
 			SimplePool.Preload(item, maxAmount);
 		}
 	}
 
-
+	public virtual float SpawnRate() {
+		return Mathf.Clamp(5 - Mathf.Log((Time.time) / 120 + 1), 0.5f, 10);
+	}
 	private void Update() {
-		spawnRate = Mathf.Clamp(5 - Mathf.Log((Time.time) / 120 + 1), 0.5f, 10);
+		spawnRate = SpawnRate();
 		if (timeSinceLastSpawn >= spawnRate && canSpawn) {
-			StartCoroutine("spawnEnemies");
+			StartCoroutine("Spawn");
 
 			timeSinceLastSpawn = 0;
 		}
@@ -50,7 +52,6 @@ public class Spawner : MonoBehaviour {
 	public void Despawn(GameObject gObject) {
 		SimplePool.Despawn(gObject);
 		gObject.transform.position = Spawner.Instance.getRandomSpawnPoint();
-
 	}
 
 
@@ -59,14 +60,11 @@ public class Spawner : MonoBehaviour {
 	}
 
 
-	IEnumerator spawnEnemies() {
-
-
-        
-		int amount = Random.Range(1, 5 );
+	IEnumerator Spawn() {
+		int amount = Random.Range(1, 5);
 
 		for (int i = 0; i < amount; i++) {
-			GameObject temp = SimplePool.Spawn(enemyTypes.RandomElement<GameObject>(), getRandomSpawnPoint(), Quaternion.identity);
+			GameObject temp = SimplePool.Spawn(toSpawnTypes.RandomElement<GameObject>(), getRandomSpawnPoint(), Quaternion.identity);
 			temp.transform.SetParent(gameObject.transform);
 			yield return new WaitForSeconds(0.5f);
 		}
