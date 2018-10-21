@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     public void FixedUpdate()
     {
 
-      if (!Target.activeSelf)
+      if (Target.activeSelf == false)
         {
             Start();
         }

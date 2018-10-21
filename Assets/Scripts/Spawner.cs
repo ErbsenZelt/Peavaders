@@ -7,6 +7,14 @@ public class Spawner : MonoBehaviour {
 	public List<GameObject> enemyTypes;
 	public List<Transform> spawnPoints;
 
+
+
+
+    [SerializeField]
+    public int iSpawnRangeLow = 1;
+    [SerializeField]
+    public int iSpawnRangeHigh = 5;
+
 	public int maxAmount = 20;
 
 	[SerializeField, Range(1, 10)]
@@ -64,7 +72,7 @@ public class Spawner : MonoBehaviour {
 
 
         
-		int amount = Random.Range(1, 5 );
+		int amount = Random.Range(iSpawnRangeLow, iSpawnRangeHigh);
 
 		for (int i = 0; i < amount; i++) {
 			GameObject temp = SimplePool.Spawn(enemyTypes.RandomElement<GameObject>(), getRandomSpawnPoint(), Quaternion.identity);
