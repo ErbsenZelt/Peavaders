@@ -14,23 +14,13 @@ public class Enemy : MonoBehaviour {
 
 	//assigned in Editor:
 	[SerializeField] private NavMeshAgent NavAgent;
-	[SerializeField] private float AvoidDistance; //avoid is triggered when closer to an avoidobject than this distance
-	[SerializeField] private float FleeSpeed;
 	[SerializeField] private Transform[] Eyes;
 	[SerializeField] private Rigidbody RB; //RigidBody of this gameobject
 	private Transform EyeTarget;
 
 	[SerializeField] private ParticleSystem dieAnim;
 
-
-
-	public void FindAvoidObjects(string AvoidTag) {
-		ToAvoid = GameObject.FindGameObjectsWithTag(AvoidTag);
-	}
-
 	public void FixedUpdate() {
-
-
 
 		NavAgent.destination = Target.transform.position;
 		EyeTarget = Target.transform;
@@ -60,8 +50,6 @@ public class Enemy : MonoBehaviour {
 		}
 
 		Target = NearestGameObject;
-
-
 	}
 
 	public void Die() {
