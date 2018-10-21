@@ -18,10 +18,8 @@ public class ChilliGetEeated : MonoBehaviour
             _fChilliHealth = value;
             if (_fChilliHealth <= 0)
             {
-                // Disable Object
                 transform.parent.GetComponent<ChiliMaster>().ChiliDied(transform.GetSiblingIndex());
-                //this.gameObject.SetActive(false);
-                //Debug.Log(this.gameObject.name + " should have been disabled");
+
             }
         }
     }
@@ -51,8 +49,6 @@ public class ChilliGetEeated : MonoBehaviour
                 fChilliHealth -= EnemyLink.fDamage;
             }
         }
-
-        //Debug.Log("Remaing health of " + this.gameObject.name + ": " + fChilliHealth);
     }
 
 
@@ -69,13 +65,5 @@ public class ChilliGetEeated : MonoBehaviour
         DoDamage(col);
 
     }
-
-    void Start()
-    {
-
-
-    }
-
-
 
 }

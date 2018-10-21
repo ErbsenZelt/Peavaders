@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillPeanut : MonoBehaviour {
+public class KillPeanut : MonoBehaviour
+{
 
 
     public float fExtendedGateTime = 0;
 
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Enterd: " +  col.name);
+        Debug.Log("Enterd: " + col.name);
 
 
         switch (col.gameObject.tag)
@@ -29,16 +30,7 @@ public class KillPeanut : MonoBehaviour {
                 break;
         }
 
-       
+
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
