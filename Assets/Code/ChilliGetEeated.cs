@@ -6,10 +6,17 @@ public class ChilliGetEeated : MonoBehaviour
 {
 
 
+	public ParticleSystem eaten;
+
+	private ParticleSystem particleEaten;
     //Counts Time for triggerd Damage Script - Every Second Damage should happen
     float fStayTimer = 0;
 
     //Property for ChilliHealth with auto check wheter its dead
+    private void Start()
+    {
+        particleEaten = Instantiate(eaten, transform.position, Quaternion.identity);
+    }
     public float fChilliHealth
     {
         get { return _fChilliHealth; }
@@ -20,10 +27,8 @@ public class ChilliGetEeated : MonoBehaviour
             Debug.Log(this.gameObject.name + "' Health: " + _fChilliHealth);
             if (_fChilliHealth <= 0)
             {
-                // Disable Object
                 transform.parent.GetComponent<ChiliMaster>().ChiliDied(transform.GetSiblingIndex());
-                //this.gameObject.SetActive(false);
-                //Debug.Log(this.gameObject.name + " should have been disabled");
+                if (particleEaten.isPlaying) particleEaten.Stop();
             }
         }
     }
@@ -35,9 +40,10 @@ public class ChilliGetEeated : MonoBehaviour
     //Applys the damage
     private void DoDamage(Collider col)
     {
-
         if (col.gameObject.tag == "Enemy")
         {
+            if (!particleEaten.isPlaying) particleEaten.Play();
+
             //Do Damage ever Second
             fStayTimer += Time.deltaTime;
             if (fStayTimer > 1)
@@ -53,8 +59,6 @@ public class ChilliGetEeated : MonoBehaviour
                 fChilliHealth -= EnemyLink.fDamage;
             }
         }
-
-        //Debug.Log("Remaing health of " + this.gameObject.name + ": " + fChilliHealth);
     }
 
 
@@ -72,12 +76,9 @@ public class ChilliGetEeated : MonoBehaviour
 
     }
 
-    void Start()
+    private void OnTriggerExit(Collider other)
     {
-
-
+        if (particleEaten.isPlaying) particleEaten.Stop();
     }
-
-
 
 }

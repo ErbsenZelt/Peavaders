@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+<<<<<<< HEAD
 public class Spawner : MonoBehaviour
 {
     public List<GameObject> toSpawnTypes;
