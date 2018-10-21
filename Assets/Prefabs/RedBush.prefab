@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65792669067113122}
   - component: {fileID: 208828099764039928}
   - component: {fileID: 114259598340249368}
+  - component: {fileID: 122223288742284918}
   m_Layer: 0
   m_Name: RedBush
   m_TagString: Gate
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066243187859434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.984638, y: 0.056407094, z: 38.182636}
+  m_LocalPosition: {x: 2.6909523, y: -0.6935931, z: -19.169535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,6 +111,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fMaxTime: 10
+--- !u!122 &122223288742284918
+Halo:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066243187859434}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190195
+  m_Size: 2
 --- !u!208 &208828099764039928
 NavMeshObstacle:
   m_ObjectHideFlags: 1

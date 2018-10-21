@@ -40,6 +40,9 @@ public class Enemy : MonoBehaviour
         NavAgent.destination = Target.transform.position;
         EyeTarget = Target.transform;
 
+
+       
+
         //point eyes at eyetargetposition
         foreach (Transform Eye in Eyes) Eye.rotation = Quaternion.LookRotation(EyeTarget.position - transform.position + transform.position.y * Vector3.up, Vector3.up);
 

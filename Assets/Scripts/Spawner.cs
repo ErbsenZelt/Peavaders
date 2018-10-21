@@ -64,7 +64,7 @@ public class Spawner : MonoBehaviour {
 
 
         
-		int amount = Random.Range(1+(int)(Time.time/10), 5 + (int)(Time.time/10));
+		int amount = Random.Range(1, 5 );
 
 		for (int i = 0; i < amount; i++) {
 			GameObject temp = SimplePool.Spawn(enemyTypes.RandomElement<GameObject>(), getRandomSpawnPoint(), Quaternion.identity);

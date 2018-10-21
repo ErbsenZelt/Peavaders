@@ -19,10 +19,10 @@ public class CloseGate : MonoBehaviour
             {
                 this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
                 this.gameObject.GetComponent<NavMeshObstacle>().enabled = false;
-                foreach (MeshRenderer mr in this.gameObject.GetComponentsInChildren<MeshRenderer>())
-                {
-                    mr.enabled = false;
-                }
+                //foreach (MeshRenderer mr in this.gameObject.GetComponentsInChildren<MeshRenderer>())
+                //{
+                //    mr.enabled = false;
+                //}
                 
                 
                 //this.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -35,6 +35,7 @@ public class CloseGate : MonoBehaviour
             {
                 this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
                 this.gameObject.GetComponent<NavMeshObstacle>().enabled = true;
+               // this.gameObject.
                 //foreach (MeshRenderer mr in this.gameObject.GetComponentsInChildren<MeshRenderer>())
                 //{
                 //    mr.enabled = true;
