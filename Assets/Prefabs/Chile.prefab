@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65924695503147534}
   - component: {fileID: 114555123399503818}
   m_Layer: 0
-  m_Name: Grass_e_03
+  m_Name: Chile
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,6 +13,10 @@ public class ChilliGetEeated : MonoBehaviour
     float fStayTimer = 0;
 
     //Property for ChilliHealth with auto check wheter its dead
+    private void Start()
+    {
+        particleEaten = Instantiate(eaten, transform.position, Quaternion.identity);
+    }
     public float fChilliHealth
     {
         get { return _fChilliHealth; }
@@ -34,9 +38,10 @@ public class ChilliGetEeated : MonoBehaviour
     //Applys the damage
     private void DoDamage(Collider col)
     {
-        if (!particleEaten.isPlaying) particleEaten.Play();
         if (col.gameObject.tag == "Enemy")
         {
+            if (!particleEaten.isPlaying) particleEaten.Play();
+
             //Do Damage ever Second
             fStayTimer += Time.deltaTime;
             if (fStayTimer > 1)
