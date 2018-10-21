@@ -4,6 +4,9 @@ using UnityEngine;
 using System.Linq;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of bf790b0... Revert "A10"
 public class Spawner : MonoBehaviour
 {
     public List<GameObject> toSpawnTypes;
