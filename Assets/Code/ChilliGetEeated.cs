@@ -6,6 +6,9 @@ public class ChilliGetEeated : MonoBehaviour
 {
 
 
+	public ParticleSystem eaten;
+
+	private ParticleSystem particleEaten;
     //Counts Time for triggerd Damage Script - Every Second Damage should happen
     float fStayTimer = 0;
 
@@ -19,7 +22,7 @@ public class ChilliGetEeated : MonoBehaviour
             if (_fChilliHealth <= 0)
             {
                 transform.parent.GetComponent<ChiliMaster>().ChiliDied(transform.GetSiblingIndex());
-
+                if (particleEaten.isPlaying) particleEaten.Stop();
             }
         }
     }
@@ -31,7 +34,7 @@ public class ChilliGetEeated : MonoBehaviour
     //Applys the damage
     private void DoDamage(Collider col)
     {
-
+        if (!particleEaten.isPlaying) particleEaten.Play();
         if (col.gameObject.tag == "Enemy")
         {
             //Do Damage ever Second
@@ -64,6 +67,11 @@ public class ChilliGetEeated : MonoBehaviour
     {
         DoDamage(col);
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (particleEaten.isPlaying) particleEaten.Stop();
     }
 
 }
