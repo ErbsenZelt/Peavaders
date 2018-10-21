@@ -24,7 +24,7 @@ public class ChiliMaster : MonoBehaviour {
         if (StillActive == 0)
         {
             PlayerFeedback.text = "YOU LOST! Try again and git gud";
-            //Invoke("SwitchToMainMenu", 5);
+            Invoke("SwitchToMainMenu", 5);
         }
     }
 

@@ -7,7 +7,11 @@ public class PowerUp01 : MonoBehaviour
 
 
     [SerializeField, Range(0,10)]
-    public float PlayerRunSpeed = 10;
+    public float fPlayerRunSpeed = 10;
+
+    [SerializeField, Range(0, 60)]
+    public float fExtendedGateTime = 10;
+
     [SerializeField, Range(1,60)]
     public float fPowerUpTime = 5;
 
@@ -34,7 +38,7 @@ public class PowerUp01 : MonoBehaviour
         
        
             MovableCharacter PlayerLink = Target.transform.parent.GetComponent<MovableCharacter>();
-            PlayerLink.moveSpeed -= PlayerRunSpeed;
+            PlayerLink.moveSpeed -= fPlayerRunSpeed;
         
         isActive = false;
     }
@@ -44,8 +48,8 @@ public class PowerUp01 : MonoBehaviour
         isActive = true;
        
             MovableCharacter PlayerLink = Target.transform.parent.GetComponent<MovableCharacter>();
-            PlayerLink.moveSpeed += PlayerRunSpeed;
-       
+            PlayerLink.moveSpeed += fPlayerRunSpeed;
+       // PlayerLink = Target.GetComponent<KillPeanut>();
 
 
     }

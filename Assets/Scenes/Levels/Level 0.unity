@@ -1433,6 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7d84946d04d0a4390fd8b02f924a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fExtendedGateTime: 0
 --- !u!4 &370666147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013564276438, guid: e066734309a9a194aa3f1806e5a664ee,
@@ -3930,6 +3931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7d84946d04d0a4390fd8b02f924a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fExtendedGateTime: 0
 --- !u!4 &1117295830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012543830182, guid: 9b45911d1d2129e4cb64ed0267651a9b,
@@ -4533,6 +4535,41 @@ Prefab:
     - target: {fileID: 224500448801227326, guid: 0597105bc4714d8408428dfaaaaa1a67,
         type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223100906277107454, guid: 0597105bc4714d8408428dfaaaaa1a67,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114732004579548092, guid: 0597105bc4714d8408428dfaaaaa1a67,
+        type: 2}
+      propertyPath: m_Text
+      value: fvrsdbgtdhb
+      objectReference: {fileID: 0}
+    - target: {fileID: 223100906277107454, guid: 0597105bc4714d8408428dfaaaaa1a67,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224500448801227326, guid: 0597105bc4714d8408428dfaaaaa1a67,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224500448801227326, guid: 0597105bc4714d8408428dfaaaaa1a67,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224500448801227326, guid: 0597105bc4714d8408428dfaaaaa1a67,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224500448801227326, guid: 0597105bc4714d8408428dfaaaaa1a67,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6066,7 +6103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343eee928d4b53341bc2e28ea5f32889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRunSpeed: 10
+  fPlayerRunSpeed: 10
+  fExtendedGateTime: 10
   fPowerUpTime: 5
   _fRemainingTime: 0
 --- !u!43 &1889171814
@@ -6370,7 +6408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1971385868
 MonoBehaviour:
   m_ObjectHideFlags: 0

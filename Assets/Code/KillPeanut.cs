@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class KillPeanut : MonoBehaviour {
 
+
+    public float fExtendedGateTime = 0;
+
     private void OnTriggerEnter(Collider col)
     {
         Debug.Log("Enterd: " +  col.name);
@@ -17,7 +20,7 @@ public class KillPeanut : MonoBehaviour {
             case "Gate":
 
                 CloseGate GateLink = col.gameObject.GetComponent<CloseGate>();
-                GateLink.fRemainingTime = GateLink.fMaxTime;            //++ Player Powerup Bonus
+                GateLink.fRemainingTime = GateLink.fMaxTime + fExtendedGateTime;            //++ Player Powerup Bonus
                 Debug.Log(GateLink.fRemainingTime);
                 break;
             case "PowerUP":
